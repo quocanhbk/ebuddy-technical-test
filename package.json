@@ -1,11 +1,19 @@
 {
   "name": "ebuddy-technical-test",
   "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "build": "turbo build",
-    "dev": "turbo dev",
-    "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "build": "npm run build --workspace=@repo/shared && npm run build --workspace=@repo/backend && npm run build --workspace=@repo/frontend",
+    "dev:all": "npm run dev:shared & npm run dev:backend & npm run dev:frontend",
+    "dev:shared": "npm run dev --workspace=@repo/shared",
+    "dev:backend": "npm run dev --workspace=@repo/backend",
+    "dev:frontend": "npm run dev --workspace=@repo/frontend",
+    "install:all": "npm install && npm run install:shared && npm run install:backend && npm run install:frontend",
+    "install:shared": "npm install --workspace=@repo/shared",
+    "install:backend": "npm install --workspace=@repo/backend",
+    "install:frontend": "npm install --workspace=@repo/frontend"
   },
   "devDependencies": {
     "prettier": "^3.5.0",
@@ -14,10 +22,5 @@
   },
   "engines": {
     "node": ">=18"
-  },
-  "packageManager": "npm@10.9.2",
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ]
+  }
 }
