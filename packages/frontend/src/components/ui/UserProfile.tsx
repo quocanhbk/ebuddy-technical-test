@@ -52,6 +52,7 @@ export function UserProfile() {
       const updatedUser = await userApi.fetchUserData();
       dispatch(setUser(updatedUser));
     } catch (err) {
+      console.error("Refresh User Data Error:", err);
       setError("Failed to refresh user data");
     } finally {
       setRefreshing(false);
@@ -68,6 +69,7 @@ export function UserProfile() {
       const updatedUser = await userApi.fetchUserData();
       dispatch(setUser(updatedUser));
     } catch (err) {
+      console.error("Update User Data Error:", err);
       setError("Failed to update user data");
     } finally {
       setLoading(false);

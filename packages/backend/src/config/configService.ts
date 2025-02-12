@@ -6,7 +6,6 @@ export enum ConfigKeys {
   PORT = "PORT",
   NODE_ENV = "NODE_ENV",
   FIREBASE_SERVICE_ACCOUNT = "FIREBASE_SERVICE_ACCOUNT",
-  FIREBASE_DATABASE_URL = "FIREBASE_DATABASE_URL",
 }
 
 class ConfigService {
@@ -28,7 +27,6 @@ class ConfigService {
 
   get firebaseConfig() {
     const serviceAccount = this.getEnvVar(ConfigKeys.FIREBASE_SERVICE_ACCOUNT);
-    const databaseUrl = this.getEnvVar(ConfigKeys.FIREBASE_DATABASE_URL, false);
 
     if (!serviceAccount) {
       throw new Error("Firebase service account is required");
@@ -37,7 +35,6 @@ class ConfigService {
     try {
       return {
         credential: JSON.parse(serviceAccount),
-        databaseUrl,
       };
     } catch (error) {
       throw new Error("Invalid Firebase service account JSON");

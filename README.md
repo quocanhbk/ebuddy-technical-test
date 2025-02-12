@@ -55,7 +55,6 @@ npm run install:all
    ```
    NODE_ENV=local
    PORT=5500
-   FIREBASE_DATABASE_URL=your_database_url
    FIREBASE_SERVICE_ACCOUNT=your_service_account_json
    ```
 

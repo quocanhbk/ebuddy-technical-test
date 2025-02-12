@@ -29,6 +29,7 @@ export const LoginForm = () => {
       await signInWithEmailAndPassword(auth, email, password);
       router.push("/profile");
     } catch (err) {
+      console.error("Login Error:", err);
       setError("Invalid email or password");
     } finally {
       setLoading(false);
